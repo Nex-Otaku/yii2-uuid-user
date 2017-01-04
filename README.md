@@ -1,6 +1,6 @@
 User module with UUID support
 =============================
-This is a fork of Dektrium user extension, with UUID support.
+Fork of Dektrium user extension, with UUID support.
 
 Installation
 ------------
