@@ -1,0 +1,21 @@
+{
+    "name": "nex-otaku/yii2-uuid-user",
+    "description": "This is a fork of Dektrium user extension, with UUID support.",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","user","uuid"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nex Otaku",
+            "email": "nex@otaku.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "nexotaku\\user\\": ""
+        }
+    }
+}
