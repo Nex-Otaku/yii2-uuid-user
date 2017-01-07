@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\user\controllers;
+namespace nex_otaku\user\controllers;
 
 use dektrium\user\Finder;
 use dektrium\user\models\Account;

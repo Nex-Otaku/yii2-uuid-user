@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\user;
+namespace nex_otaku\user;
 
 /**
  * Конфигурация модуля "dektrium/yii2-user" для бэкенда.
@@ -36,10 +36,10 @@ class UserBackendModule extends UserBaseModule
             ];
     
     public $controllerMap = [
-        'admin'    => 'common\modules\user\controllers\AdminController',
-        'settings'    => 'common\modules\user\controllers\SettingsController',
-        'registration' => 'common\modules\user\controllers\RegistrationController',
-        'security' => 'common\modules\user\controllers\SecurityController',
+        'admin'    => 'nex_otaku\user\controllers\AdminController',
+        'settings'    => 'nex_otaku\user\controllers\SettingsController',
+        'registration' => 'nex_otaku\user\controllers\RegistrationController',
+        'security' => 'nex_otaku\user\controllers\SecurityController',
         'recovery' => 'dektrium\user\controllers\RecoveryController',
         'profile' => 'dektrium\user\controllers\ProfileController',
     ];

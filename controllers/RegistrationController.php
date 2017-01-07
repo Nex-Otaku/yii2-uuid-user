@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\user\controllers;
+namespace nex_otaku\user\controllers;
 
 use dektrium\user\controllers\RegistrationController as BaseRegistrationController;
 use dektrium\user\models\User;

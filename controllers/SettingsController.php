@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\user\controllers;
+namespace nex_otaku\user\controllers;
 
 use dektrium\user\models\User;
 use dektrium\user\controllers\SettingsController as BaseSettingsController;

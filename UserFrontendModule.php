@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\user;
+namespace nex_otaku\user;
 
 /**
  * Конфигурация модуля "dektrium/yii2-user" для фронтенда.

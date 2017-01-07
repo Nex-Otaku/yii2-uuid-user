@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\user\classes;
+namespace nex_otaku\user\classes;
 
 use yii\authclient\Collection;
 use Yii;

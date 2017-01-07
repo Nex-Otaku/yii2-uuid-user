@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\user\models;
+namespace nex_otaku\user\models;
 
 use dektrium\user\models\Account as BaseAccount;
 use nex_otaku\uuid\behaviors\UuidBehavior;

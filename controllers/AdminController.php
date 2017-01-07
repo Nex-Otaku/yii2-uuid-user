@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\user\controllers;
+namespace nex_otaku\user\controllers;
 
 use dektrium\user\controllers\AdminController as BaseAdminController;
 use dektrium\user\Module;

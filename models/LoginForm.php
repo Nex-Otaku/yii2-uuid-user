@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace common\modules\user\models;
+namespace nex_otaku\user\models;
 
 use dektrium\user\models\LoginForm as BaseLoginForm;
 use Yii;

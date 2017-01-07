@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\user;
+namespace nex_otaku\user;
 
 use dektrium\user\Module as BaseModule;
 
@@ -13,12 +13,12 @@ class UserBaseModule extends BaseModule
 {
     public $modelMap = [
                 'User' => 'common\models\User',
-                'Profile' => 'common\modules\user\models\Profile',
-                'Account' => 'common\modules\user\models\Account',
-                'LoginForm' => 'common\modules\user\models\LoginForm',
-                'RegistrationForm' => 'common\modules\user\models\RegistrationForm',
-                'SettingsForm' => 'common\modules\user\models\SettingsForm',
-                'UserSearch' => 'common\modules\user\models\UserSearch',
+                'Profile' => 'nex_otaku\user\models\Profile',
+                'Account' => 'nex_otaku\user\models\Account',
+                'LoginForm' => 'nex_otaku\user\models\LoginForm',
+                'RegistrationForm' => 'nex_otaku\user\models\RegistrationForm',
+                'SettingsForm' => 'nex_otaku\user\models\SettingsForm',
+                'UserSearch' => 'nex_otaku\user\models\UserSearch',
             ];
     /** @var array Mailer configuration */
     public $mailer = [
