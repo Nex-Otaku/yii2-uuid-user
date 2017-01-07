@@ -21,11 +21,18 @@ or add
 
 to the require section of your `composer.json` file.
 
+Features
+-----
+
+1. Easily disable profile fields and avatar.
+
+2. Email as username.
+
+3. UUID support.
+
+4. SoftDelete.
 
 Usage
 -----
 
-Once the extension is installed, simply use it in your code by  :
-
-```php
-<?= \nexotaku\user\AutoloadExample::widget(); ?>```
+See "dektrium/yii2-user".
