@@ -9,7 +9,7 @@
  * поэтому делаем так:
  * в файле common/config/bootstrap.php
  * // Переопределяем класс Finder модуля "dektrium/yii2-user".
- * Yii::$classMap['dektrium\user\Finder'] = Yii::getAlias('@common/modules/user/classes/Finder.php');
+ * Yii::$classMap['dektrium\user\Finder'] = dirname(dirname(__DIR__)) . '/vendor/nex-otaku/yii2-uuid-user/classes/Finder.php';
  * 
  * TODO:
  * Добиться, чтобы можно было нормально переопределять Finder - с помощью конфигурации модуля.
