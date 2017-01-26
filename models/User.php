@@ -7,7 +7,9 @@ use nex_otaku\uuid\behaviors\UuidBehavior;
 use yii\base\Arrayable;
 use nex_otaku\uuid\behaviors\BinaryFieldsBehavior;
 use nex_otaku\uuid\traits\BinaryFieldsTrait;
-use yii\base\ModelEvent;
+use nex_otaku\softdelete\behaviors\SoftDeleteBehavior;
+use nex_otaku\softdelete\behaviors\SoftDeleteBlameableBehavior;
+use nex_otaku\softdelete\behaviors\SoftDeleteTimestampBehavior;
 
 /**
  * User ActiveRecord model.
@@ -44,6 +46,7 @@ use yii\base\ModelEvent;
 class User extends BaseUser implements Arrayable
 {
     use BinaryFieldsTrait;
+    use \nex_otaku\softdelete\traits\NotDeletedTrait;
     
     /**
      * @inheritdoc
@@ -55,7 +58,13 @@ class User extends BaseUser implements Arrayable
             'binaryFields' => [
                 'class' => BinaryFieldsBehavior::className(),
                 'fields' => ['id']
-            ]
+            ],
+            [
+                'class' => SoftDeleteBehavior::className(),
+                'replaceRegularDelete' => true
+            ],
+            SoftDeleteBlameableBehavior::className(),
+            SoftDeleteTimestampBehavior::className(),
         ]);
     }
 

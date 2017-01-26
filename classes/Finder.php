@@ -171,12 +171,9 @@ class Finder extends Object
      */
     public function findUser($condition)
     {
-        if ($this->module->enableSoftDelete) {
-            return $this->userQuery
-                ->where(['deleted' => false])
-                ->andWhere($condition);
-        }
-        return $this->userQuery->where($condition);
+        return $this->userQuery
+            ->where(['deleted' => false])
+            ->andWhere($condition);
     }
 
     /**

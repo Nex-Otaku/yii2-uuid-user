@@ -29,11 +29,7 @@ class AdminController extends BaseAdminController
             $model = $this->findModel($id);
             $event = $this->getUserEvent($model);
             $this->trigger(self::EVENT_BEFORE_DELETE, $event);
-            if ($this->module->enableSoftDelete) {
-                $model->softDelete();
-            } else {
-                $model->delete();
-            }
+            $model->delete();
             $this->trigger(self::EVENT_AFTER_DELETE, $event);
             \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'User has been deleted'));
         }
