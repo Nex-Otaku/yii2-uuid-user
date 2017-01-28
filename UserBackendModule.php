@@ -2,6 +2,8 @@
 
 namespace nex_otaku\user;
 
+use Yii;
+
 /**
  * Конфигурация модуля "dektrium/yii2-user" для бэкенда.
  *
@@ -43,4 +45,20 @@ class UserBackendModule extends UserBaseModule
         'recovery' => 'dektrium\user\controllers\RecoveryController',
         'profile' => 'dektrium\user\controllers\ProfileController',
     ];
+    
+    public function init()
+    {
+        parent::init();
+        
+        // В теме оформления AdminLTE есть два основных шаблона.
+        // Один для гостей, другой для залогиненных пользователей.
+        // Выбираем подходящий шаблон.
+        if ($this->useAdminLTE) {
+            Yii::$app->on('beforeRequest', function ($event) {
+                Yii::$app->layout = Yii::$app->user->isGuest ? 
+                    '@app/views/layouts/main-login' :
+                    '@app/views/layouts/main';
+            });
+        }
+    }
 }
