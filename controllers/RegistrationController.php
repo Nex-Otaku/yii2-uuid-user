@@ -34,6 +34,7 @@ class RegistrationController extends BaseRegistrationController
         $user = \Yii::createObject([
             'class'    => User::className(),
             'scenario' => 'connect',
+            // Используем EMail в качестве логина.
             'username' => $account->email,
             'email'    => $account->email,
         ]);
