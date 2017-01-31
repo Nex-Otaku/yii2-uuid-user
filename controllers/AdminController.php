@@ -5,6 +5,7 @@ namespace nex_otaku\user\controllers;
 use dektrium\user\controllers\AdminController as BaseAdminController;
 use dektrium\user\Module;
 use dektrium\user\models\User;
+use nex_otaku\user_group\Module as GroupModule;
 
 /**
  * AdminController allows you to administrate users.
@@ -68,5 +69,45 @@ class AdminController extends BaseAdminController
         return $this->render('create', [
             'user' => $user,
         ]);
+    }
+    
+    /**
+     * Редактирование группы пользователя.
+     *
+     * @param int $id
+     *
+     * @return mixed
+     */
+    public function actionUpdateGroup($id)
+    {
+        $groupModule = $this->getGroupModule();
+        if (empty($groupModule)) {
+            return $this->redirect(['index']);
+        }
+        Url::remember('', 'actions-redirect');
+        $user    = $this->findModel($id);
+        $group = $user->group;
+
+        if ($group == null) {
+            $group = \Yii::createObject($groupModule->modelMap['UserGroup']);
+            $group->link('user', $user);
+        }
+
+        $this->performAjaxValidation($group);
+
+        if ($group->load(\Yii::$app->request->post()) && $group->save()) {
+            \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'Group details have been updated'));
+            return $this->refresh();
+        }
+
+        return $this->render('_group', [
+            'user'    => $user,
+            'group' => $group,
+        ]);
+    }
+    
+    private function getGroupModule()
+    {
+        return GroupModule::getOverloadedInstance();
     }
 }
