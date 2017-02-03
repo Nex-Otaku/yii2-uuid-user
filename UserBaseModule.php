@@ -3,6 +3,8 @@
 namespace nex_otaku\user;
 
 use dektrium\user\Module as BaseModule;
+use Yii;
+use yii\base\Theme;
 
 /**
  * Общая конфигурация модуля "dektrium/yii2-user".
@@ -33,4 +35,26 @@ class UserBaseModule extends BaseModule
     public $profileFields = ['name', 'public_email', /*'gravatar_email', 'gravatar_id',*/ 'location', 'website', 'bio'];
     // Используем тему оформления AdminLTE.
     public $useAdminLTE = true;
+
+    public function init()
+    {
+        $this->overrideViews();
+        parent::init();
+    }
+    
+    protected function overrideViews()
+    {
+        $theme = isset(Yii::$app->view->theme) ? Yii::$app->view->theme : new Theme();
+        $pathMap = isset($theme->pathMap) ? $theme->pathMap : [];
+        $pathMap = array_merge($pathMap, [
+                    '@dektrium/user/views' => [
+                        // Переопределяем
+                        '@nex_otaku/user/views',
+                        // Путь по умолчанию
+                        '@dektrium/user/views',
+                    ]
+            ]);
+        $theme->pathMap = $pathMap;
+        Yii::$app->view->theme = $theme;
+    }
 }
