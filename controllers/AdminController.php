@@ -103,6 +103,7 @@ class AdminController extends BaseAdminController
         return $this->render('_group', [
             'user'    => $user,
             'group' => $group,
+            'groupList' => $groupModule->group->groupList,
         ]);
     }
     
