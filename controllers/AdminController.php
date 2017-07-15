@@ -6,6 +6,7 @@ use dektrium\user\controllers\AdminController as BaseAdminController;
 use dektrium\user\Module;
 use dektrium\user\models\User;
 use nex_otaku\user_group\Module as GroupModule;
+use Yii;
 
 /**
  * AdminController allows you to administrate users.
@@ -80,6 +81,10 @@ class AdminController extends BaseAdminController
      */
     public function actionUpdateGroup($id)
     {
+        // TODO вынести в отдельный плагин, 
+        // который будет находиться в модуле yii2-user-group
+        // и цепляться к этому контроллеру автоматически.
+        
         $groupModule = $this->getGroupModule();
         if (empty($groupModule)) {
             return $this->redirect(['index']);
@@ -109,6 +114,9 @@ class AdminController extends BaseAdminController
     
     private function getGroupModule()
     {
+        if (!isset(Yii::$app->extensions['nex-otaku/yii2-user-group'])) {
+            return false;
+        }
         return GroupModule::getOverloadedInstance();
     }
 }
