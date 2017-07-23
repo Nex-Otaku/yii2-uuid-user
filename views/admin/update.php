@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         // Интеграция с модулем "nex_otaku/user_group".
                         [
-                            'label' => Yii::t('user', 'User Group'),
+                            'label' => Yii::t('nex-otaku-user-group', 'User Group'),
                             'url' => ['/user-group/admin/update-group', 'id' => $user->id],
                             'visible' => true, // STUB isset(Yii::$app->extensions['nex-otaku/yii2-user-group']),
                         ],
