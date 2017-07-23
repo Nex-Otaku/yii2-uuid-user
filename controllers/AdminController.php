@@ -5,8 +5,8 @@ namespace nex_otaku\user\controllers;
 use dektrium\user\controllers\AdminController as BaseAdminController;
 use dektrium\user\Module;
 use dektrium\user\models\User;
-use nex_otaku\user_group\Module as GroupModule;
-use Yii;
+//use nex_otaku\user_group\Module as GroupModule;
+//use yii\helpers\Url;
 
 /**
  * AdminController allows you to administrate users.
@@ -72,51 +72,52 @@ class AdminController extends BaseAdminController
         ]);
     }
     
-    /**
-     * Редактирование группы пользователя.
-     *
-     * @param int $id
-     *
-     * @return mixed
-     */
-    public function actionUpdateGroup($id)
-    {
-        // TODO вынести в отдельный плагин, 
-        // который будет находиться в модуле yii2-user-group
-        // и цепляться к этому контроллеру автоматически.
-        
-        $groupModule = $this->getGroupModule();
-        if (empty($groupModule)) {
-            return $this->redirect(['index']);
-        }
-        Url::remember('', 'actions-redirect');
-        $user    = $this->findModel($id);
-        $group = $user->group;
-
-        if ($group == null) {
-            $group = \Yii::createObject($groupModule->modelMap['UserGroup']);
-            $group->link('user', $user);
-        }
-
-        $this->performAjaxValidation($group);
-
-        if ($group->load(\Yii::$app->request->post()) && $group->save()) {
-            \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'Group details have been updated'));
-            return $this->refresh();
-        }
-
-        return $this->render('_group', [
-            'user'    => $user,
-            'group' => $group,
-            'groupList' => $groupModule->group->groupList,
-        ]);
-    }
-    
-    private function getGroupModule()
-    {
-        if (!isset(Yii::$app->extensions['nex-otaku/yii2-user-group'])) {
-            return false;
-        }
-        return GroupModule::getOverloadedInstance();
-    }
+//    /**
+//     * Редактирование группы пользователя.
+//     *
+//     * @param int $id
+//     *
+//     * @return mixed
+//     */
+//    public function actionUpdateGroup($id)
+//    {
+//        // TODO вынести в отдельный плагин, 
+//        // который будет находиться в модуле yii2-user-group
+//        // и цепляться к этому контроллеру автоматически.
+//        
+//        $groupModule = $this->getGroupModule();
+//        if (empty($groupModule)) {
+//            return $this->redirect(['index']);
+//        }
+//        Url::remember('', 'actions-redirect');
+//        $user    = $this->findModel($id);
+//        $group = $groupModule->storage->getGroupByUserId($id);
+//
+//        if (empty($group)) {
+//            $group = $groupModule->storage->makeNewGroupForUserWithId($id);
+//        }
+//
+//        $this->performAjaxValidation($group);
+//
+//        if ($group->load(\Yii::$app->request->post()) && $group->save()) {
+//            \Yii::$app->getSession()->setFlash('success', \Yii::t('user', 'Group details have been updated'));
+//            return $this->refresh();
+//        }
+//
+//        return $this->render('_group', [
+//            'user'    => $user,
+//            'group' => $group,
+//            'groupList' => $groupModule->group->groupsForDropDown,
+//        ]);
+//    }
+//    
+//    private function getGroupModule()
+//    {
+//        // Так как модуль в целях разработки подключен напрямую,
+//        // а не через расширение, отключаем временно этот код.
+//        //if (!isset(Yii::$app->extensions['nex-otaku/yii2-user-group'])) {
+//        //    return false;
+//        //}
+//        return GroupModule::getOverloadedInstance();
+//    }
 }

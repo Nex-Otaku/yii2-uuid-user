@@ -19,10 +19,10 @@ use yii\helpers\Html;
  * @var array    $groupList
  */
 
-$module = $this->context->module;
+//$module = $this->context->module;
 ?>
 
-<?php $this->beginContent('@dektrium/user/views/admin/update.php', ['user' => $user]) ?>
+<?php '' /* $this->beginContent('@dektrium/user/views/admin/update.php', ['user' => $user]) */?>
 
 <?php $form = ActiveForm::begin([
     'layout' => 'horizontal',
@@ -39,7 +39,6 @@ $module = $this->context->module;
                 [
                     'prompt' => Yii::t('user', 'Choose user group'),
                 ]); ?>
- ?>
 
 <div class="form-group">
     <div class="col-lg-offset-3 col-lg-9">
@@ -49,4 +48,4 @@ $module = $this->context->module;
 
 <?php ActiveForm::end(); ?>
 
-<?php $this->endContent() ?>
+<?php '' /* $this->endContent() */ ?>

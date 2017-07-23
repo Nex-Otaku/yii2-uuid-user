@@ -54,9 +54,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             'url' => ['/user/admin/assignments', 'id' => $user->id],
                             'visible' => isset(Yii::$app->extensions['dektrium/yii2-rbac']),
                         ],
+                        // Интеграция с модулем "nex_otaku/user_group".
                         [
                             'label' => Yii::t('user', 'User Group'),
-                            'url' => ['/user/admin/update-group', 'id' => $user->id],
+                            'url' => ['/user-group/admin/update-group', 'id' => $user->id],
                             'visible' => true, // STUB isset(Yii::$app->extensions['nex-otaku/yii2-user-group']),
                         ],
                         '<hr>',
